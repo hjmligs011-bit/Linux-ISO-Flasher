@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Helper privilegiado instalado pelo pacote (nome exigido pela política Polkit).
+
+O módulo real fica em ``linux_iso_flasher.flashing.helper``. Este arquivo é
+apenas o ponto de entrada em /usr/libexec/linux-iso-flasher/helper.
+"""
+
+from __future__ import annotations
+
+import os
+import sys
+from pathlib import Path
+
+os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+
+for candidate in (
+    Path("/usr/lib/linux-iso-flasher"),
+    Path("/usr/libexec/linux-iso-flasher"),
+):
+    if (candidate / "linux_iso_flasher" / "__init__.py").is_file():
+        sys.path.insert(0, str(candidate))
+        break
+
+from linux_iso_flasher.flashing.helper import run_helper  # noqa: E402
+
+if __name__ == "__main__":
+    sys.exit(run_helper())

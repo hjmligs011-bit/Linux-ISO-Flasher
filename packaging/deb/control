@@ -1,0 +1,21 @@
+# Debian/Ubuntu packaging metadata (coloque este arquivo em debian/control).
+# Ajuste o Maintainer antes de publicar.
+Source: linux-iso-flasher
+Section: utils
+Priority: optional
+Maintainer: Linux ISO Flasher contributors <linux-iso-flasher@example.invalid>
+Build-Depends: debhelper-compat (= 13), dh-python, python3 (>= 3.11), python3-pip, python3-build, python3-setuptools, python3-wheel
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+
+Package: linux-iso-flasher
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3 (>= 3.11), python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1, udisks2, policykit-1, zstd, hicolor-icon-theme
+Description: Gravador de imagens ISO/IMG para dispositivos removíveis
+ Interface GTK4/libadwaita para gravar imagens em mídia removível via
+ UDisks2, com verificação byte a byte e autorização Polkit. A GUI nunca
+ executa como root; a gravação acontece em um helper privilegiado.
+ .
+ Write ISO/IMG images to removable devices with a GTK4/libadwaita
+ interface. Enumeration and unmounting use UDisks2; writing is performed
+ by a Polkit-authorized root helper with byte-for-byte verification.

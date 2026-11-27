@@ -1,0 +1,6 @@
+linux-iso-flasher (0.1.0-1) unstable; urgency=medium
+
+  * Primeira versão: gravação verificada em mídia removível via UDisks2 e
+    helper autorizado por Polkit.
+
+ -- Linux ISO Flasher contributors <linux-iso-flasher@example.invalid>  Fri, 27 Nov 2026 13:40:00 -0300

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Linux ISO Flasher
+GenericName=Gravador de imagens ISO
+Comment=Grava imagens ISO/IMG em dispositivos removíveis com verificação
+Comment[en]=Write ISO/IMG images to removable devices with verification
+Exec=linux-iso-flasher %f
+TryExec=linux-iso-flasher
+Icon=io.github.linuxisoflasher
+Terminal=false
+StartupNotify=true
+Categories=System;Utility;
+MimeType=application/x-iso9660-image;application/x-diskcopy;application/x-xz;application/gzip;application/zstd;
+Actions=FlashImage;
+Keywords=iso;img;usb;pendrive;flash;gravar;
+
+[Desktop Action FlashImage]
+Name=Gravar imagem selecionada
+Name[en]=Flash selected image
+Exec=linux-iso-flasher %F

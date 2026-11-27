@@ -1,0 +1,39 @@
+# Maintainer: Linux ISO Flasher contributors <substitua-por-seu-email@example.invalid>
+pkgname=linux-iso-flasher
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Gravador de imagens ISO/IMG para dispositivos removíveis com verificação"
+arch=('any')
+# url='https://<seu-repositorio>'  # ajuste ao fork/usuario antes de publicar na AUR
+license=('GPL-3.0-or-later')
+depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'udisks2' 'polkit' 'hicolor-icon-theme')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-pip')
+optdepends=('zstd: descompressão de imagens .zst sem o módulo compression.zstd')
+# provides=()  # opcional
+# conflicts=() # opcional
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP')  # SKIP apenas para build local; troque pelo sha256sum do release
+
+# Gere o tarball a partir da raiz do repositório, por exemplo:
+#   git archive --format=tar.gz --prefix=linux-iso-flasher-0.1.0/ -o linux-iso-flasher-0.1.0.tar.gz HEAD
+# Para a AUR, use o URL do release e o respectivo sha256sum.
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m pip install --no-deps --ignore-installed \
+    --root="$pkgdir" --prefix=/usr dist/*.whl
+
+  # O wheel já instala packaging/helper/helper como
+  # /usr/libexec/linux-iso-flasher/helper, nome exigido pela política Polkit.
+
+  install -Dm0644 LICENSE "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  for doc in docs/INSTALL.md docs/ARCHITECTURE.md docs/TESTING.md CONTRIBUTING.md; do
+    install -Dm0644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$(basename "$doc")"
+  done
+}

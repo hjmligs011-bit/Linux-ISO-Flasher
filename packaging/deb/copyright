@@ -1,0 +1,18 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: linux-iso-flasher
+Source: https://github.com/linux-iso-flasher/linux-iso-flasher
+
+Files: *
+Copyright: 2026 Linux ISO Flasher contributors
+License: GPL-3+
+ Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
+ sob os termos da GNU General Public License, versão 3 ou (a seu critério)
+ qualquer versão posterior.
+ .
+ This program is free software: you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation, either version 3 of the License, or (at your option)
+ any later version.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 3 can be found in /usr/share/common-licenses/GPL-3.

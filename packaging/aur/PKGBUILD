@@ -1,0 +1,54 @@
+# Maintainer: Linux ISO Flasher contributors <linux-iso-flasher@example.invalid>
+# Publicar na AUR como "linux-iso-flasher" com este PKGBUILD e o .SRCINFO.
+pkgname=linux-iso-flasher
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Gravador de imagens ISO/IMG para dispositivos removíveis com verificação"
+arch=('any')
+url="https://github.com/linux-iso-flasher/linux-iso-flasher"
+license=('GPL-3.0-or-later')
+depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'udisks2' 'polkit' 'hicolor-icon-theme')
+makedepends=('python-build' 'python-installer' 'python-pip' 'python-setuptools' 'python-wheel')
+optdepends=('zstd: descompressão de imagens .zst sem o módulo compression.zstd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-iso-flasher/linux-iso-flasher/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('5a6f187eb7fe35383e19df653880692f8713906f4b69321e46fa6d3c9c99d672')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  PYTHONPATH=src python -m unittest discover -s tests -p 'test_*.py'
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m pip install --no-deps --ignore-installed \
+    --root="$pkgdir" --prefix=/usr dist/*.whl
+
+  # O wheel instala packaging/helper/helper como
+  # /usr/libexec/linux-iso-flasher/helper, exigido pela política Polkit.
+  install -Dm0644 LICENSE "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  for doc in docs/INSTALL.md docs/ARCHITECTURE.md docs/TESTING.md CONTRIBUTING.md; do
+    install -Dm0644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$(basename "$doc")"
+  done
+
+  # Evita avisos do makepkg e arquivos que vazam caminhos de build.
+  find "$pkgdir" -type d -name __pycache__ -prune -exec rm -rf {} +
+  find "$pkgdir/usr/lib" -type f -name direct_url.json -delete
+}
+
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+}

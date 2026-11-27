@@ -1,0 +1,57 @@
+# EXPERIMENTAL — manifesto de referência, não suportado como via principal.
+# O helper usa pkexec e Polkit no HOST; dentro do sandbox padrão do Flatpak
+# pkexec/Polkit não funcionam. Para uso real é necessária uma porta D-Bus do
+# host (por exemplo org.freedesktop.Flatpak.Development, com
+# --talk-name=org.freedesktop.Flatpak) ou um helper/host service separado.
+# Veja docs/INSTALL.md antes de tentar usar este manifesto.
+id: io.github.linuxisoflasher
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+command: linux-iso-flasher
+
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=all
+  - --talk-name=org.freedesktop.UDisks2
+  - --system-talk-name=org.freedesktop.UDisks2
+  - --filesystem=home
+  # --filesystem=xdg-run/dbus é útil apenas quando a aplicação realmente precisa
+  # da sessão D-Bus do host; mantenha se o helper/host service usar esse soquete.
+  - --filesystem=xdg-run/dbus
+  - --own-name=io.github.linuxisoflasher
+  # Necessário para qualquer integração com helper fora do sandbox:
+  - --talk-name=org.freedesktop.Flatpak
+
+cleanup:
+  - /lib/python*/site-packages/*.dist-info
+  - /lib/python*/site-packages/*/__pycache__
+  - /share/doc
+
+modules:
+  - name: linux-iso-flasher
+    buildsystem: simple
+    build-commands:
+      # --prefix=/app já instala dentro do destino do Flatpak; usar
+      # --root=/app junto com --prefix=/app resultaria em /app/app.
+      - python3 -m pip install --no-deps --ignore-installed --no-build-isolation --root=/ --prefix=/app .
+      - install -Dm0755 packaging/helper/helper /app/libexec/linux-iso-flasher/helper
+      - install -Dm0644 packaging/desktop/linux-iso-flasher.desktop /app/share/applications/linux-iso-flasher.desktop
+      - install -Dm0644 assets/icons/io.github.linuxisoflasher.svg /app/share/icons/hicolor/scalable/apps/io.github.linuxisoflasher.svg
+      # A política Polkit é inútil dentro do sandbox; mantida apenas para
+      # documentar a instalação esperada no host.
+      - install -Dm0644 packaging/polkit/org.linuxisoflasher.pkexec.policy /app/share/polkit-1/actions/org.linuxisoflasher.pkexec.policy
+    sources:
+      # Para builds locais: type dir apontando para a raiz do repositório.
+      # Para releases, troque por:
+      #   type: archive
+      #   url: https://<seu-servidor>/linux-iso-flasher-0.1.0.tar.gz
+      #   sha256: <sha256 do arquivo>
+      - type: dir
+        path: ../..
+
+# O runtime GNOME traz Python/PyGObject/GTK4/libadwaita. O binário `zstd` pode
+# não estar presente; nesse caso adicione um módulo com o código-fonte do zstd
+# (com URL e sha256 verificáveis) antes do módulo da aplicação.
