@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linux-iso-flasher"
+version = "0.1.0"
+description = "Gravador de imagens ISO/IMG para dispositivos removíveis em Linux"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Linux ISO Flasher contributors" }
+]
+classifiers = [
+    "Environment :: X11 Applications :: GTK",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Hardware",
+]
+
+[project.optional-dependencies]
+test = []
+
+[project.scripts]
+linux-iso-flasher = "linux_iso_flasher.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["linux_iso_flasher*"]
+
+[tool.setuptools.package-data]
+linux_iso_flasher = ["ui/*.css", "locale/*/LC_MESSAGES/*.mo"]
+
+[tool.setuptools.data-files]
+"share/applications" = ["packaging/desktop/linux-iso-flasher.desktop"]
+"share/icons/hicolor/scalable/apps" = ["assets/icons/io.github.linuxisoflasher.svg"]
+"share/polkit-1/actions" = ["packaging/polkit/org.linuxisoflasher.pkexec.policy"]
+"share/locale/en/LC_MESSAGES" = ["src/linux_iso_flasher/locale/en/LC_MESSAGES/linux-iso-flasher.mo"]
+"share/locale/pt_BR/LC_MESSAGES" = ["src/linux_iso_flasher/locale/pt_BR/LC_MESSAGES/linux-iso-flasher.mo"]
+"libexec/linux-iso-flasher" = [
+    "packaging/helper/helper",
+    "src/linux_iso_flasher/flashing/helper_entry.py",
+]

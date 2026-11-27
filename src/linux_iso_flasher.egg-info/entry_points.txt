@@ -1,0 +1,2 @@
+[console_scripts]
+linux-iso-flasher = linux_iso_flasher.main:main

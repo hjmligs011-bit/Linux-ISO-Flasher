@@ -1,0 +1,122 @@
+/* Linux ISO Flasher — identidade própria inspirada em tons noturnos.
+   Cores são declaradas para tema escuro e claro; libadwaita controla o modo. */
+
+@define-color lif_accent #89b4fa;
+@define-color lif_success #a6e3a1;
+@define-color lif_error #f38ba8;
+@define-color lif_warning #f9e2af;
+
+.lif-hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.lif-hero-subtitle {
+  font-size: 14px;
+  opacity: 0.78;
+}
+
+.lif-card {
+  background-color: alpha(currentColor, 0.035);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.lif-card-header {
+  margin-bottom: 12px;
+}
+
+.lif-step-number {
+  color: @lif_accent;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 9px;
+  background-color: alpha(@lif_accent, 0.16);
+}
+
+.lif-step-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lif-step-hint {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.lif-path {
+  font-family: monospace;
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.lif-badge {
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  background-color: alpha(@lif_accent, 0.16);
+  color: @lif_accent;
+}
+
+.lif-success { color: @lif_success; }
+.lif-error { color: @lif_error; }
+.lif-warning { color: @lif_warning; }
+
+.lif-device-name {
+  font-weight: 650;
+}
+
+.lif-device-meta {
+  font-size: 12px;
+  opacity: 0.72;
+}
+
+.lif-device-row {
+  padding: 10px 8px;
+  border-radius: 12px;
+}
+
+.lif-drop-active {
+  outline: 2px dashed @lif_accent;
+  outline-offset: -4px;
+}
+
+.lif-progress-bar {
+  min-height: 10px;
+  border-radius: 999px;
+}
+
+.lif-percent {
+  font-size: 42px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.lif-metric-label {
+  font-size: 11px;
+  opacity: 0.65;
+  font-weight: 600;
+}
+
+.lif-metric-value {
+  font-size: 15px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.lif-result-icon {
+  font-size: 64px;
+}
+
+.lif-history-title {
+  font-weight: 650;
+}
+
+.lif-history-meta {
+  font-size: 11px;
+  opacity: 0.7;
+}

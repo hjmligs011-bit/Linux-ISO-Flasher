@@ -1,0 +1,586 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Linux ISO Flasher package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Linux ISO Flasher 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 13:32-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/linux_iso_flasher/flashing/engine.py:167
+msgid "A imagem não cabe no dispositivo selecionado."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/engine.py:186
+msgid "A imagem não continha dados."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:45
+msgid "Pedido inválido enviado ao helper."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:48
+msgid "Pedido de gravação ausente."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:52
+msgid "Caminho de imagem inválido."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:55
+msgid "Nome de dispositivo inválido."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:58
+#: src/linux_iso_flasher/flashing/targets.py:200
+msgid "Identidade esperada inválida."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:61
+msgid "Tamanho de bloco inválido."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:64
+msgid "Opção de verificação inválida."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/helper.py:142
+msgid "Helper iniciado sem pedido."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:70
+msgid "O caminho do dispositivo mudou; gravação abortada."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:72
+msgid "O dispositivo ficou menor; gravação abortada."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:105
+msgid "Escrita incompleta no arquivo de teste."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:124
+msgid "Arquivo de teste removido durante a operação."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:142
+msgid "O destino não é um dispositivo de bloco."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:144
+msgid "Números major/minor do dispositivo não conferem."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:154
+msgid "O dispositivo não aceitou mais dados (pode estar cheio)."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:167
+msgid "Leitura de verificação incompleta."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:191
+msgid "A seleção aponta para uma partição, não para o disco inteiro."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:193
+msgid "Disco interno bloqueado por padrão."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:195
+msgid "Este dispositivo contém o sistema em execução."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:197
+msgid "Capacidade do dispositivo inválida."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:202
+msgid "A identidade do dispositivo não confere com a seleção."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:206
+msgid "Dispositivo não encontrado."
+msgstr ""
+
+#: src/linux_iso_flasher/flashing/targets.py:208
+msgid "O destino precisa ser um dispositivo de bloco."
+msgstr ""
+
+#: src/linux_iso_flasher/images/detector.py:92
+msgid "O caminho selecionado não é um arquivo regular."
+msgstr ""
+
+#: src/linux_iso_flasher/images/detector.py:98
+msgid "A imagem selecionada está vazia."
+msgstr ""
+
+#: src/linux_iso_flasher/images/detector.py:112
+msgid "O arquivo comprimido não possui uma assinatura válida."
+msgstr ""
+
+#: src/linux_iso_flasher/permissions/polkit.py:74
+msgid "Helper privilegiado não encontrado nesta instalação."
+msgstr ""
+
+#: src/linux_iso_flasher/permissions/polkit.py:171
+msgid "O helper não encerrou após a operação."
+msgstr ""
+
+#: src/linux_iso_flasher/permissions/polkit.py:178
+msgid "Polkit não autorizou a execução do helper."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:20
+#: src/linux_iso_flasher/ui/window.py:112
+msgid "Preferências"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:27
+msgid "Aparência"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:29
+msgid "Tema"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:30
+msgid "Escolha como o aplicativo deve aparecer."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:31
+msgid "Escuro"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:31
+msgid "Claro"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:31
+msgid "Automático"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:38
+msgid "Idioma"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:40
+msgid "Idioma da interface"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:41
+msgid "Português brasileiro é o padrão."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:50
+#: src/linux_iso_flasher/ui/window.py:808
+msgid "Verificação"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:51
+msgid "A verificação SHA-256 após a gravação é sempre executada."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:54
+msgid "Verificar dados gravados"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:55
+msgid "Compara a imagem com o dispositivo byte a byte."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:75 src/linux_iso_flasher/ui/window.py:61
+#: src/linux_iso_flasher/ui/window.py:108
+msgid "Linux ISO Flasher"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/dialogs.py:79
+msgid ""
+"Grave imagens de sistemas operacionais em USB e cartões SD com segurança."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:108
+msgid "Gravador de imagens"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:113
+msgid "Histórico"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:114
+msgid "Sobre"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:115
+msgid "Sair"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:116
+msgid "Menu"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:121
+msgid "Atualizar dispositivos"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:139
+msgid "Grave seu sistema com simplicidade"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:142
+msgid ""
+"Selecione uma imagem, escolha um dispositivo removível e grave com "
+"verificação."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:150
+#: src/linux_iso_flasher/ui/window.py:194
+#: src/linux_iso_flasher/ui/window.py:410
+msgid "Selecionar imagem"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:150
+msgid "ISO, IMG, RAW, BIN ou imagem comprimida"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:156
+msgid "Selecionar dispositivo"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:156
+msgid "USB, cartões SD e microSD detectados automaticamente"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:162
+#: src/linux_iso_flasher/ui/window.py:264
+msgid "Gravar imagem"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:162
+msgid "Confirme os dados antes de apagar o destino"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:168
+#: src/linux_iso_flasher/ui/window.py:612
+msgid "Aguardando uma imagem e um dispositivo."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:199
+msgid "Limpar imagem"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:204
+msgid "ou arraste o arquivo para esta área"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:210
+#: src/linux_iso_flasher/ui/window.py:454
+msgid "Nenhuma imagem selecionada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:235
+#: src/linux_iso_flasher/ui/window.py:516
+msgid "Nenhum dispositivo detectado"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:238
+msgid "Atualizar"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:245
+msgid ""
+"Conecte um pendrive ou cartão SD. Discos internos ficam bloqueados por "
+"segurança."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:260
+msgid "Escolha uma imagem e um dispositivo para continuar."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:278
+msgid "A gravação apaga todos os dados do dispositivo e é verificada ao final."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:298
+#: src/linux_iso_flasher/ui/window.py:670
+msgid "Preparando…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:302
+msgid "Gravado"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:303
+msgid "Velocidade"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:304
+msgid "Tempo restante"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:306
+#: src/linux_iso_flasher/ui/window.py:632
+#: src/linux_iso_flasher/ui/window.py:675
+#: src/linux_iso_flasher/ui/window.py:882
+msgid "Cancelar"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:348
+msgid "Concluir"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:350
+msgid "Ver histórico"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:372
+msgid "Histórico de gravações"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:373
+msgid "Limpar histórico"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:384
+msgid "Voltar"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:416
+msgid "Imagens de sistema"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:417
+msgid "ISO"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:418
+msgid "Imagens cruas"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:419
+#: src/linux_iso_flasher/ui/window.py:420
+#: src/linux_iso_flasher/ui/window.py:421
+msgid "Comprimidas"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:473
+#, python-brace-format
+msgid " · comprimida de {size}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:479
+msgid "Imagem válida"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:490
+msgid "Lista de dispositivos atualizada."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:502
+msgid "O dispositivo selecionado foi removido."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:514
+#, python-brace-format
+msgid "Dispositivos encontrados: {count}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:543
+msgid "USB"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:559
+#, python-brace-format
+msgid "Espaço disponível: {size}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:566
+msgid "DISCO INTERNO — BLOQUEADO"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:594
+#, python-brace-format
+msgid "{image} → {device} ({path})"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:601
+msgid "Pronto para gravar. Confirme na próxima etapa."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:605
+msgid "uma imagem"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:607
+msgid "um dispositivo"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:609
+#, python-brace-format
+msgid "Selecione {items} para continuar."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:620
+msgid "Apagar todos os dados?"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:622
+#, python-brace-format
+msgid ""
+"A imagem “{image}” será gravada em {device} ({path}, {size}).\n"
+"\n"
+"TODOS OS DADOS DESTE DISPOSITIVO SERÃO APAGADOS.\n"
+"Verifique se selecionou o pendrive ou cartão correto."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:633
+msgid "Gravar agora"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:638
+msgid "Confirmo que todos os dados do dispositivo serão apagados"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:650
+msgid "Marque a confirmação para continuar."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:663
+#, python-brace-format
+msgid "{device} · {path}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:700
+#, python-brace-format
+msgid "Erro inesperado: {error}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:715
+msgid "Preparando dispositivo…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:716
+msgid "Gravando imagem…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:717
+msgid "Verificando dados gravados…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:718
+msgid "Finalizando…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:723
+#: src/linux_iso_flasher/ui/window.py:729
+msgid "Cancelando…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:730
+msgid "Cancelando com segurança…"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:775
+msgid "Não foi possível gravar"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:786
+msgid "Gravação cancelada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:788
+msgid ""
+"A operação foi interrompida. O dispositivo pode estar parcialmente gravado."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:793
+msgid "Gravação concluída e verificada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:795
+msgid "Os dados gravados conferem byte a byte com a imagem original."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:800
+msgid "A gravação falhou"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:801
+msgid "Verificação não aprovada."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:804
+msgid "Imagem"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:805
+msgid "Dispositivo"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:806
+msgid "Dados gravados"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:807
+msgid "Duração"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:808
+msgid "Aprovada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:808
+msgid "Não aprovada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:809
+msgid "SHA-256"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:835
+msgid "Nenhuma gravação registrada."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:853
+msgid "Imagem desconhecida"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:857
+#, python-brace-format
+msgid "{date} · {device} · {duration}"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:867
+msgid "Sucesso · verificação aprovada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:869
+msgid "Falha · verificação não aprovada"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:879
+msgid "Limpar histórico?"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:880
+msgid "Todas as gravações registradas serão removidas deste dispositivo."
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:883
+msgid "Limpar"
+msgstr ""
+
+#: src/linux_iso_flasher/ui/window.py:894
+msgid "Histórico limpo."
+msgstr ""

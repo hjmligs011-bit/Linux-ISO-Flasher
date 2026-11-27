@@ -1,0 +1,147 @@
+Metadata-Version: 2.4
+Name: linux-iso-flasher
+Version: 0.1.0
+Summary: Gravador de imagens ISO/IMG para dispositivos removíveis em Linux
+Author: Linux ISO Flasher contributors
+License-Expression: GPL-3.0-or-later
+Classifier: Environment :: X11 Applications :: GTK
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: System :: Hardware
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: test
+Dynamic: license-file
+
+# Linux ISO Flasher
+
+Gravador nativo de imagens para dispositivos removíveis em Linux. A interface
+GTK4/libadwaita roda como usuário normal; toda escrita em dispositivo de bloco
+acontece em um helper privilegiado autorizado pelo Polkit.
+
+> Estado do projeto: **0.1.0** — primeira versão, com foco em gravação segura e
+> verificada. Não há capturas de tela neste repositório.
+
+## Funcionalidades implementadas
+
+- seleção de imagem `.iso`, `.img`, `.raw` e `.bin`, ou comprimida em `.xz`,
+  `.gz` e `.zst` (detecção por assinatura de bytes, não apenas extensão);
+- listagem de dispositivos removíveis via UDisks2, com atualização automática
+  em inserções/remoções;
+- identidade estável do dispositivo (vendor/model/serial/tamanho/transporte)
+  recalculada antes da gravação; troca de dispositivo aborta a operação;
+- bloqueio de discos internos, partições e dispositivos com montagens do
+  sistema; desmontagem das partições via UDisks2 antes de gravar;
+- leitura da imagem em fluxo (chunks de 1 MiB, configuráveis entre 64 KiB e
+  16 MiB), sem carregar o arquivo inteiro em memória;
+- `fsync` ao final e verificação byte a byte com SHA-256 da imagem e do
+  dispositivo;
+- cancelamento durante a gravação e mensagens de erro tratáveis;
+- configuração em `$XDG_CONFIG_HOME` e histórico de operações em
+  `$XDG_STATE_HOME` (somente metadados);
+- interface em pt_BR, com catálogo opcional em inglês.
+
+## Requisitos
+
+Python 3.11+, GTK 4, libadwaita, PyGObject, UDisks2, Polkit/`pkexec`,
+`hicolor-icon-theme` e o binário `zstd` quando o Python não oferece
+`compression.zstd`. Veja `docs/INSTALL.md` para os pacotes de cada distro.
+
+## Instalação rápida
+
+```sh
+# instala o aplicativo, o helper em /usr/libexec/linux-iso-flasher/helper,
+# o arquivo .desktop, o ícone e os catálogos de idioma:
+sudo python3 -m pip install .
+sudo install -Dm0644 packaging/polkit/org.linuxisoflasher.pkexec.policy \
+  /usr/share/polkit-1/actions/org.linuxisoflasher.pkexec.policy
+sudo systemctl restart polkit
+```
+
+Para executar diretamente do repositório (sem instalar):
+
+```sh
+PYTHONPATH=src python3 -m linux_iso_flasher.main
+```
+
+Nesse caso, defina `LIF_HELPER` com o caminho de
+`src/linux_iso_flasher/flashing/helper_entry.py` se quiser testar a integração
+com `pkexec`.
+
+## Uso em três etapas
+
+1. **Escolha a imagem** — arquivo ISO/IMG/RAW/BIN (ou `.xz`/`.gz`/`.zst`).
+2. **Escolha o dispositivo** — apenas mídias removíveis são listadas. Confira
+   modelo, capacidade e identidade antes de continuar; **todos os dados do
+   destino serão apagados**.
+3. **Grave e acompanhe** — confirme, autentique no diálogo do Polkit e acompanhe
+   as fases de gravação e verificação. Não remova a mídia até a conclusão.
+
+O cancelamento pode ser solicitado durante a operação; a gravação é interrompida
+entre chunks e o resultado é registrado no histórico como cancelado.
+
+## Segurança
+
+- A GUI nunca executa como root; `pkexec` inicia apenas o helper, com a ação
+  `org.linuxisoflasher.flash` (`auth_admin_keep` na sessão ativa).
+- O helper revalida o pedido JSON, o caminho da imagem, o tipo de destino e a
+  fingerprint recebida. Nenhum comando de shell é montado a partir de dados do
+  dispositivo.
+- A política exige senha administrativa; não existe autorização automática
+  (`allow_yes`) para esta ação.
+- Flatpak é **experimental**: pkexec/Polkit do host não funcionam no sandbox
+  padrão. AppImage funciona fora do sandbox, desde que helper e política
+  estejam instalados no host. Detalhes em `docs/INSTALL.md`.
+
+## Formatos suportados
+
+| Entrada | Manipulação |
+| --- | --- |
+| `.iso`, `.img`, `.raw`, `.bin` | fluxo direto |
+| `.xz`, `.gz` | descompressão com a biblioteca padrão |
+| `.zst` | `compression.zstd` quando disponível; senão binário `zstd` |
+
+## Histórico
+
+Cada operação registra data/hora, nome e tamanho da imagem, dispositivo,
+duração, sucesso, verificação, SHA-256 calculado e eventual erro. O arquivo é
+`$XDG_STATE_HOME/linux-iso-flasher/history.json`, escrito de forma atômica e
+limitado por configuração (padrão: 100 entradas). O histórico não copia dados
+da imagem.
+
+## Atalhos
+
+Além dos padrões GTK4 (Tab/Shift+Tab para navegar, Enter para ativar, Esc para
+fechar diálogos), a aplicação define **Ctrl+Q** para sair. Não há outros atalhos
+proprietários na 0.1.0. O helper trata SIGINT/SIGTERM como cancelamento.
+
+## Desenvolvimento e testes
+
+```sh
+PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+Testes automatizados usam somente `FileTarget` e arquivos temporários; discos
+reais são proibidos na suíte. Veja `docs/TESTING.md`, `docs/ARCHITECTURE.md` e
+`CONTRIBUTING.md`.
+
+## Empacotamento
+
+- `packaging/arch/PKGBUILD`
+- `packaging/deb/` (control, rules, changelog, copyright e source/format)
+- `packaging/rpm/linux-iso-flasher.spec`
+- `packaging/flatpak/io.github.linuxisoflasher.yaml` (experimental)
+- `packaging/appimage/build-appimage.sh`
+
+## Estado do projeto e limitações
+
+Versão 0.1.0. **Ainda não implementados:** catálogo de downloads, comparação
+com checksum informado pelo usuário (o SHA-256 existente é apenas interno e
+usado na verificação da gravação), suporte a ISO híbrida e idiomas além de
+pt_BR/en.
+
+## Licença
+
+GPL-3.0-or-later. Texto completo em `LICENSE`.
